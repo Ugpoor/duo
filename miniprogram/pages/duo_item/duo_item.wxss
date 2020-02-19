@@ -1,0 +1,5 @@
+/* pages/duo_item.wxss */
+@import "../duo_today/duo_today.wxss";
+ .smallcontext-checked{
+   background-color:chartreuse;
+ }

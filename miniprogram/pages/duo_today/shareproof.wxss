@@ -1,0 +1,9 @@
+/* miniprogram/pages/duo_today/shareproof.wxss */
+@import "duo_today.wxss";
+.userinfo-avatar {
+  overflow: hidden;
+  display: block;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 20%;
+}

@@ -1,0 +1,13 @@
+<!--miniprogram/pages/duo_today/shareproof.wxml-->
+<view class="userinfo-avatar">
+  <open-data type="userAvatarUrl"/>
+</view>
+
+<open-data type="userNickName" />
+<text>请您帮助评价</text>
+<text>{{doing}}</text>
+<text>{{startTime}}开始，用时{{timecount}}</text>
+<text>您觉得该工作质量</text>
+<slider value="{{proof.score}}" min="0" max="10" bindchange="scoring" show-value="true"/>
+<button bindtap='finishp' disabled="{{owner}}==={{proof.checker}}">完成评价</button>
+

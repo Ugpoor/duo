@@ -1,0 +1,40 @@
+/* pages/duo_today.wxss */
+ .context{
+   height:80rpx;
+   line-height: 80rpx;
+   font-size:50rpx;
+ }
+ .smallcontext{
+   line-height: 50rpx;
+   font-size:40rpx;
+   vertical-align:middle;
+ }
+  .smallTitle{
+    line-height:50rpx;
+    color: rgb(1, 71, 35);
+    vertical-align: middle;
+  }
+.tip{
+  height:80rpx;
+  line-height:80rpx;
+  text-align:right;
+  color:coral;
+}
+.container{
+  line-height:80rpx;
+  font-size:50rpx;
+}
+
+button{
+  background: rgb(7, 193, 96);
+  margin: 10px;
+  color: #fff;
+  margin-bottom: 8px;
+  font-size: 39rpx;
+}
+
+.timeitem{
+  line-height:80rpx;
+  display: flex;
+  flex-direction: row;
+}

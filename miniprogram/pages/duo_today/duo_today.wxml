@@ -1,0 +1,47 @@
+<!--pages/duo_today.wxml-->
+  <text class="tip">今天是{{today}}</text>
+  <view class="timeitem">
+    <text class="smallTitle">目前正在进行：</text>
+    <text class="smallcontext">{{standardTime===""?"":("标准时长："+standardTime)}}</text>
+  </view>
+  <view class="container">
+      <view class="timeitem">
+        <text class="context">{{father}}{{father==''?'':'.'}}</text>
+        <input placeholder="做什么" value="{{doing}}" bindinput="inputdoing" class="context" />
+      </view>
+      <view class="timeitem">
+        <text>从{{startTime}}开始</text>
+        {{timecount}}
+      </view>
+      <view class="timeitem">
+        <button bindtap='start'>{{istiming==true?"暂停":"开始"}}</button>
+        <button bindtap='Reset'>重来</button>
+        <button bindtap="finish">完成</button>
+       <!-- <button bindtap="hang">挂起</button>-->
+      </view>
+  </view>
+  <!--
+  <text class="smallTitle">挂起工作：</text>
+  <view class="container" wx:for="{{doList}}">
+      <view wx:if="{{item.status===0 && item.istiming===false}}" class="smallcontext" catchtap="catchhang">{{index+1}}){{item.father}}{{item.father===''?'':'.'}}{{item.doing}}({{item.startTime}})</view>
+  </view>
+  -->
+  <view class="timeitem">
+    <switch bindchange="needp" type="checkbox"/>
+    <text style="color:rgb(7, 193, 96);">完成时发送结果求证</text>
+  </view>
+  <text class="smallTitle">计划工作：</text>
+    <radio-group bindchange="catchdo">
+      <view wx:for="{{doList}}">
+        <block wx:if="{{item.status==2}}">
+          <radio value="{{item.doing}}" />{{item.father}}{{item.father===''?'':'.'}}{{item.doing}}{{item.standardTime==""?"":("(标准时长："+item.standardTime)}}）
+        </block>
+      </view>
+</radio-group>
+  <text class="smallTitle">完成工作：</text>
+    <view class="container" wx:for="{{doList}}">
+          <view wx:if="{{item.status===1}}"  class="smallcontext">
+          {{index+1}}){{item.father}}{{item.father===''?'':'.'}}{{item.doing}}({{item.startTime}}, {{item.standardTime===""?item.timecount:"比标准"+item.lateStandard}})</view>
+    </view>
+
+

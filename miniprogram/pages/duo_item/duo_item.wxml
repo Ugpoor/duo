@@ -1,0 +1,77 @@
+<!--pages/duo_item.wxml-->
+<view class="timeitem">
+  <text class="smallTitle">任务名称:</text>
+  <input placeholder="做什么" bindinput="catchdoing" class="smallcontext" value="{{doing}}"/>
+</view>
+
+<view class="timeitem">
+  <text class="smallTitle">任务开始:</text>
+  <input placeholder="YYYYMMDD" bindblur="catchStartDay" class="smallcontext" type="number" maxlength="8" value="{{startDay}}"/>
+</view>
+
+<view class="timeitem">
+  <text class="smallTitle">任务结束:</text>
+  <input placeholder="YYYYMMDD" bindblur="catchEndDay" class="smallcontext" type="number" maxlength="8" value="{{endDay}}"/>
+</view>
+
+<view class="timeitem">
+  <radio-group bindchange="bindRepeat">
+    <radio class="radio" value="once" checked="{{onceCheck}}">
+      <text>一次</text>
+    </radio>
+    <radio class="radio" value="daily">
+      <text>每日</text>
+    </radio>
+    <radio class="radio" value="weekly">
+      <text>每周</text>
+    </radio>
+    <radio class="radio" value="monthly">
+      <text>每月</text>
+    </radio>
+    <radio class="radio" value="yearly">
+      <text>每年</text>
+    </radio>
+    <radio class="radio" value="xdays">
+      <view class ="timeitem">
+        <text class="smallcontext">每隔</text>
+        <input placeholder="多少" bindinput="catchRepeatDays" class="smallcontext" maxlength="5" value="{{repeatDays}}" />
+        <text class="smallcontext">天</text>
+      </view>
+    </radio>
+  </radio-group>
+</view>
+
+<view class="timeitem">
+  <text class="smallTitle">启动时间:</text>
+    <input placeholder="HH:MM:SS" bindinput="catchStartTime" class="smallcontext" type="number" maxlength="8" value="{{startTime}}"/>
+</view>
+
+<view class="timeitem">
+  <text class="smallTitle">是否需要证明:</text>
+  <switch bindchange="needp" type="checkbox" class="smallcontext" checked="{{needproof}}"/>
+</view>
+
+<view class="timeitem">
+  <text class="smallTitle">标准时长:</text>
+  <input placeholder="HH:MM:SS" bindblur="catchStandard" class="smallcontext" value="{{standardTime}}"/>
+</view>
+
+<view class="timeitem">
+  <button bindtap='create'>新建</button>
+  <button bindtap='Reset'>重来</button>
+</view>
+
+<text class="smallTitle">计划清单</text>
+<checkbox-group bindchange="todoCheck">
+  <view wx:for="{{todoList}}">
+    <checkbox value="{{item._id}}"   class="{{item.chooseTodo}}"/>{{item.father}}{{item.father===''?'':'.'}}{{item.doing}}（{{item.repeat}},{{item.standardTime==""?"":(item.standardTime)}}）
+  </view>
+</checkbox-group>
+<!--
+<view class="container" wx:for="{{todoList}}">
+  <view wx:if="{{item.status===1}}"  class="{{item.chooseTodo}}" bindtap="todoCheck" >{{index+1}}){{item.father}}{{item.father===''?'':'.'}}{{item.doing}}（频率：{{item.repeat}}{{item.standardTime==""?"":(" 标准时长："+item.standardTime)}}）</view>
+</view>
+-->
+<button bindtap="delete">删除</button>
+
+

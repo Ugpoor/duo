@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/duo_today/duo_today",
+    "pages/duo_item/duo_item",
+    "pages/duo_comm",
+    "pages/index/index",
+    "pages/userConsole/userConsole",
+    "pages/storageConsole/storageConsole",
+    "pages/databaseGuide/databaseGuide",
+    "pages/addFunction/addFunction",
+    "pages/deployFunctions/deployFunctions",
+    "pages/chooseLib/chooseLib",
+    "pages/openapi/openapi",
+    "pages/openapi/serverapi/serverapi",
+    "pages/openapi/callback/callback",
+    "pages/openapi/cloudid/cloudid",
+    "pages/im/im",
+    "pages/im/room/room",
+    "pages/duo_today/shareproof"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "多多日志（Duo)",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#F6F6F6",
+    "selectedColor": "#d81e06",
+    "list": [
+      {
+        "pagePath": "pages/duo_today/duo_today",
+        "text": "今日",
+        "iconPath": "tab_today.png",
+        "selectedIconPath": "tab_today.png"
+      },
+      {
+        "pagePath": "pages/duo_item/duo_item",
+        "text": "事项",
+        "iconPath": "tab_item.png",
+        "selectedIconPath": "tab_item.png"
+      },
+      {
+        "pagePath": "pages/duo_comm",
+        "text": "交流",
+        "iconPath": "tab_comm.png",
+        "selectedIconPath": "tab_comm.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}
