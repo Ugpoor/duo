@@ -143,15 +143,7 @@ Page({
         todocol.get({
           success: function (res) {
              tdl = res.data;
-           
-
-            
-            //为何进不了循环体(for 循环有错 )
-            for(d of tdl){
-              /*
-              var d=tdl[i];
-              console.log("d:" + Json.stringify(d));
-             
+            for(let d of tdl){
               var task = {
                 today: td,
                 startTime: "",
@@ -169,29 +161,30 @@ Page({
                 standardTime: d.standardTime,
                 lateStandard: ""
               };
+             // console.log("task："+JSON.stringify(task));
               dl.push(task);
-              console.log("tasklength:" + dl.length);
-              */
+             // console.log("add dl:"+JSON.stringify(dl))
             }
-            console.log("tdl:" + JSON.stringify(tdl));
+            console.log("dl1:" + JSON.stringify(dl));
           }
-        }) ;
-        
-        if (dlol=== 0) {
+        });
+      
+      console.log("dl2:"+JSON.stringify(dl));
+      if (dlol=== 0) {
           wx.showToast({
             icon: 'loading',
             title: '新的一天开始了'
           })
           that.setData({
-            today: td
+            today: td,
+            doList:dl
+          })
+        }
+        else{
+          that.setData({
+            doList:dl
           })
         };
-
-
-      //  console.log("dl："+JSON.stringify(dl));
-        that.setData({
-          doList: dl
-        })
       }
     });
 
