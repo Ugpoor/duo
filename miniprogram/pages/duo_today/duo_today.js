@@ -169,7 +169,10 @@ Page({
           }
         });
       
+
+      //?这个为什么读不出来 ？
       console.log("dl2:"+JSON.stringify(dl));
+      
       if (dlol=== 0) {
           wx.showToast({
             icon: 'loading',
