@@ -2,7 +2,7 @@
   "pages": [
     "pages/duo_today/duo_today",
     "pages/duo_item/duo_item",
-    "pages/duo_comm",
+    "pages/duo_report/duo_report",
     "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
@@ -42,10 +42,10 @@
         "selectedIconPath": "tab_item.png"
       },
       {
-        "pagePath": "pages/duo_comm",
-        "text": "交流",
-        "iconPath": "tab_comm.png",
-        "selectedIconPath": "tab_comm.png"
+        "pagePath": "pages/duo_report/duo_report",
+        "text": "我的",
+        "iconPath": "tab_my.png",
+        "selectedIconPath": "tab_my.png"
       }
     ]
   },

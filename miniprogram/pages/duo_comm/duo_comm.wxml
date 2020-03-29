@@ -1,0 +1,18 @@
+<view class="timeitem">
+    <view class="userinfo-avatar">
+      <open-data type="userAvatarUrl"/>
+    </view>
+    <view>
+      <open-data type="userNickName" />
+    <text class="smallcontext">工作：完成 {{accomplished}}/总计{{accomplished+todo}}(得分:{{todayScore}})</text>
+    </view>
+</view>
+<text class="smallTitle">我的工作：</text>
+<view class="timeitem">
+    <view class="userinfo-avatar">
+      <open-data type="userAvatarUrl"/>
+    </view>
+    <open-data type="userNickName" />
+</view>
+
+<text class="smallTitle">我的工友：</text>

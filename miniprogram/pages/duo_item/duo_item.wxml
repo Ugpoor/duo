@@ -5,12 +5,10 @@
 </view>
 
 <view class="timeitem">
-  <text class="smallTitle">任务开始:</text>
+  <text class="smallTitle250">开始日:</text>
   <input placeholder="YYYYMMDD" bindblur="catchStartDay" class="smallcontext" type="number" maxlength="8" value="{{startDay}}"/>
-</view>
 
-<view class="timeitem">
-  <text class="smallTitle">任务结束:</text>
+  <text class="smallTitle250">结束日:</text>
   <input placeholder="YYYYMMDD" bindblur="catchEndDay" class="smallcontext" type="number" maxlength="8" value="{{endDay}}"/>
 </view>
 
@@ -34,7 +32,7 @@
     <radio class="radio" value="xdays">
       <view class ="timeitem">
         <text class="smallcontext">每隔</text>
-        <input placeholder="多少" bindinput="catchRepeatDays" class="smallcontext" maxlength="5" value="{{repeatDays}}" />
+        <input placeholder="多少" bindinput="catchRepeatDays" class="smallcontext150" maxlength="5" value="{{repeatDays}}" />
         <text class="smallcontext">天</text>
       </view>
     </radio>
@@ -42,20 +40,22 @@
 </view>
 
 <view class="timeitem">
-  <text class="smallTitle">启动时间:</text>
+  <text class="smallTitle250">启动时:</text>
     <input placeholder="HH:MM:SS" bindinput="catchStartTime" class="smallcontext" type="number" maxlength="8" value="{{startTime}}"/>
-</view>
-
-<view class="timeitem">
-  <text class="smallTitle">是否需要证明:</text>
-  <switch bindchange="needp" type="checkbox" class="smallcontext" checked="{{needproof}}"/>
-</view>
-
-<view class="timeitem">
-  <text class="smallTitle">标准时长:</text>
+  <text class="smallTitle250">标准长:</text>
   <input placeholder="HH:MM:SS" bindblur="catchStandard" class="smallcontext" value="{{standardTime}}"/>
 </view>
+<view class="timeitem">
+  <text class="smallTitle150">积分:</text>
+    <input placeholder="0" class="smallcontext" type="number" maxlength="2" bindblur="catchscore" value="{{score}}"/>
 
+  <text class="smallTitle250">需要证明:</text>
+  <switch bindchange="needp" type="checkbox" class="smallcontext" checked="{{needproof}}"/>
+</view>
+<view class="timeitem">
+  <text class="smallTitle150">分配给:</text>
+    <input class="smallcontext" bindblur="catchowner" value="{{taskowner}}"/>
+</view>
 <view class="timeitem">
   <button bindtap='create'>新建</button>
   <button bindtap='Reset'>重来</button>

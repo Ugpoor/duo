@@ -7,7 +7,7 @@
   <view class="container">
       <view class="timeitem">
         <text class="context">{{father}}{{father==''?'':'.'}}</text>
-        <input placeholder="做什么" value="{{doing}}" bindinput="inputdoing" class="context" />
+        <input placeholder="{{placeHDo}}" value="{{doing}}" bindblur="inputdoing" class="context" />
       </view>
       <view class="timeitem">
         <text>从{{startTime}}开始</text>
@@ -17,15 +17,8 @@
         <button bindtap='start'>{{istiming==true?"暂停":"开始"}}</button>
         <button bindtap='Reset'>重来</button>
         <button bindtap="finish">完成</button>
-       <!-- <button bindtap="hang">挂起</button>-->
       </view>
   </view>
-  <!--
-  <text class="smallTitle">挂起工作：</text>
-  <view class="container" wx:for="{{doList}}">
-      <view wx:if="{{item.status===0 && item.istiming===false}}" class="smallcontext" catchtap="catchhang">{{index+1}}){{item.father}}{{item.father===''?'':'.'}}{{item.doing}}({{item.startTime}})</view>
-  </view>
-  -->
   <view class="timeitem">
     <switch bindchange="needp" type="checkbox"/>
     <text style="color:rgb(7, 193, 96);">完成时发送结果求证</text>
@@ -41,7 +34,7 @@
   <text class="smallTitle">完成工作：</text>
     <view class="container" wx:for="{{doList}}">
           <view wx:if="{{item.status===1}}"  class="smallcontext">
-          {{index+1}}){{item.father}}{{item.father===''?'':'.'}}{{item.doing}}({{item.startTime}}, {{item.standardTime===""?item.timecount:"比标准"+item.lateStandard}})</view>
+          {{index+1}}){{item.father}}{{item.father===''?'':'.'}}{{item.doing}}(始于{{item.startTime}}, {{item.standardTime===""?"时长"+item.timecount:"比标准"+item.lateStandard}})</view>
     </view>
 
 

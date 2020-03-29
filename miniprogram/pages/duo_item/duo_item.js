@@ -15,9 +15,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    taskowner:"",  //taskowner 为空则为所有人任务，需要openid
     startDay:"",
-    endDay:"",
-    repeat:"once",
+    endDay:"",  
     repeatDays:0,
     startTime: "",
     standardTime: "",
@@ -26,6 +26,7 @@ Page({
     label: {type:"plan"},
     needproof: false,
     proofSetup:{}, //未来用于指定核实人等条件
+    score:0,      //得分
     todoList:[],
     onceCheck:true,
     todelete:[]
@@ -51,14 +52,15 @@ Page({
 //新建按钮
   create:function(e){
     var that = this;
-    var doin=that.data.doing
-    console.log(doin)
-    if (doin === "" || that.data.startDay==="" || that.data.startTime==="" || that.data.endDay===""||that.data.repeat=="") {
+    var da = that.data;
+    var doin=da.doing
+    if (doin === "" || da.startDay==="" || da.startTime==="" || da.endDay===""||da.repeat=="") {
       wx.showToast({
         title: '请填写完整。',
         image: '../../images/icon_no2.png'
       })
-    } else {
+    }
+    else {
       todocol.where({
         doing:doin
       }).get({
@@ -66,15 +68,17 @@ Page({
           if(res.data.length===0){
             todocol.add({
               data: {
-                startDay: that.data.startDay,
-                endDay: that.data.endDay,
-                repeat: that.data.repeat,
-                repeatDays: that.data.repeatDays,
-                startTime: that.data.startTime,
-                standardTime: that.data.standardTime,
+                taskowner:da.taskowner,
+                startDay: da.startDay,
+                endDay: da.endDay,
+                repeat: da.repeat,
+                repeatDays: da.repeatDays,
+                startTime: da.startTime,
+                standardTime: da.standardTime,
                 doing: doin,
-                father: that.data.father,
-                needproof: that.data.needproof,
+                father: da.father,
+                needproof: da.needproof,
+                score:da.score
               },
               success: res => {
                 // 在返回结果中会包含新创建的记录的 _id
@@ -85,6 +89,15 @@ Page({
                 console.log('[数据库] [新增记录] 成功，记录 _id: ', res._id)
               }
             });
+            
+            todocol.get({
+              success: res => {
+                var dl = res.data;
+                that.setData({
+                  todoList: dl
+                });
+              }
+            })
           }
           else{
             wx.showToast({
@@ -93,15 +106,6 @@ Page({
           }
         }
       })
-       
-       todocol.get({
-         success: res=> {
-           var dl = res.data;
-           that.setData({
-             todoList:dl
-           });
-          }
-       })
       }
     },
 
@@ -109,6 +113,7 @@ Page({
     Reset:function(){
       var that=this;
       that.setData({
+        taskowner:"",
         startDay: "",
         endDay: "",
         repeat: "once",
@@ -119,6 +124,7 @@ Page({
         father: "",
         label: { type: "plan" },
         needproof: false,
+        score:0,
         proofSetup: {}, //未来用于指定核实人等条件
         onceCheck:true
       })
@@ -267,22 +273,32 @@ Page({
     for(let todel of dellist){
       todocol.doc(todel).remove({
         success: function (res) {
-          console.log("删除记录:" + todel);
+          todocol.get({
+            success: res => {
+              var dl = res.data;
+              that.setData({
+                todoList: dl
+              });
+            }
+          })
         }
       })
-    }
-    todocol.get({
-      success: res => {
-        var dl = res.data;
-        that.setData({
-          todoList: dl
-        });
-      }
-    })
-
+    };
   },
 
+  catchscore: function (e) {
+    var that = this;
+    that.setData({
+      score: e.detail.value
+    })
+  },
 
+  catchowner: function(e) {
+    var that = this;
+    that.setData({
+      taskowner: e.detail.value
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

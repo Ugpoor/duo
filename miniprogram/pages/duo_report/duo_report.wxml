@@ -1,0 +1,46 @@
+<!--pages/duo_report/duo_report.wxml-->
+<view class="flex">
+  <view class="left">
+    <view class="userinfo-avatar">
+      <open-data type="userAvatarUrl" />
+    </view>
+  </view>
+  <view class="right">
+    <view class="timeitem">
+      <view class="left2">
+        <open-data type="userNickName" class="tip" /> 的小结
+      </view>
+      <!--
+      <view class="right2">
+        <button bindtap='cal'>结算</button>
+      </view>
+      -->
+    </view>
+    <view>
+      <text class="smallcontext">完成:{{done}}/总计:{{done+todo}}</text>
+    </view>
+    <view>
+      <text class="smallcontext">得分:{{totalScore}}/未兑换:{{unUsedScore}}</text>
+    </view>
+  </view>
+</view>
+<text class="smallTitle">筛选</text>
+<radio-group bindchange="catchSearch">
+  <view class="timeitem">
+    <radio value="0" checked="true" />
+    <picker mode="date" value="{{day}}" start="2020-03-01" bindchange="bindDateChange">日期为{{day}}</picker>
+  </view>
+  <view class="timeitem">
+    <radio value="1" />
+    <text class="smallcontext">任务名为</text>
+    <input placeholder="做什么" value="{{searchDo}}" bindblur="searchdo" class="smallcontext" />
+  </view>
+</radio-group>
+<view class="timeitem">
+  <button bindtap='search'>搜索</button>
+  <button bindtap='export'>复制列表</button>
+</view>
+ <view class="container" wx:for="{{doList}}">
+   <view class="smallcontext">
+          {{index+1}}){{item.father}}{{item.father===''?'':'.'}}{{item.doing}}(始于{{item.startTime}}, {{item.standardTime===""?"时长"+item.timecount:"比标准"+item.lateStandard}})
+    </view></view>

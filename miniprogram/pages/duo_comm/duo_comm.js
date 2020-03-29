@@ -1,10 +1,14 @@
-// pages/duo_comm.js
+// pages/duo_comm/duo_comm.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    todayScore:0,
+    accomplished:0,
+    todo:0,
+
 
   },
 

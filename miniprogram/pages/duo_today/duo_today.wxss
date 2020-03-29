@@ -9,11 +9,28 @@
    font-size:40rpx;
    vertical-align:middle;
  }
+  .smallcontext150{
+   line-height: 50rpx;
+   font-size:40rpx;
+   vertical-align:middle;
+    width:150rpx;
+ }
   .smallTitle{
     line-height:50rpx;
     color: rgb(1, 71, 35);
     vertical-align: middle;
   }
+.smallTitle150{
+   line-height:50rpx;
+    color: rgb(1, 71, 35);
+    vertical-align: middle;
+    width:150rpx;
+}.smallTitle250{
+   line-height:50rpx;
+    color: rgb(1, 71, 35);
+    vertical-align: middle;
+    width:250rpx;
+}
 .tip{
   height:80rpx;
   line-height:80rpx;

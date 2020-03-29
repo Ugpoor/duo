@@ -1,0 +1,17 @@
+/* pages/duo_report/duo_report.wxss */
+@import "../duo_today/duo_today.wxss";
+.flex{
+  display:flex;
+}
+.left{
+  width:25%;
+}
+.right{
+  width:75%;
+}
+.left2{
+  width:50%;
+}
+.right2{
+  width:25%;
+}

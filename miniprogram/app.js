@@ -16,5 +16,32 @@ App({
     }
 
     this.globalData = {}
-  }
+  },
+  globalData: {},
+
+  //获取openid，由于网络延时，通常在其他页onload之后才会success,所以从其他页传回调函数cb进来。
+  getopenid: function (cb) {
+    if (this.globalData.openid) {
+      typeof cb == "function" && cb(this.globalData.openid)
+    } else {
+      var that = this
+      wx.cloud.callFunction({
+        name: 'login',
+        data: {},
+        success: res => {
+          //闭包函数内，可以用this,而不需要用that=this
+          that.globalData.openid = res.result.openid
+          typeof cb == "function" && cb(that.globalData.openid)
+        },
+        fail: err => {
+          wx.showToast({
+            icon: 'none',
+            title: '获取 openid 失败，请检查 login 云函数',
+          })
+          console.log('[云函数][login] 获取 openid 失败，请检查是否有部署云函数，错误信息：', err)
+        },
+      })
+
+    }
+  },
 })
